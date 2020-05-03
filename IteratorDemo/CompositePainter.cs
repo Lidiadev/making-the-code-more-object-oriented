@@ -10,15 +10,20 @@ namespace IteratorDemo
         private IEnumerable<TPainter> ContainedPainters { get; }
 
         // Reduces the collection of painters to a single painter.
-        private Func<double, IEnumerable<TPainter>, IPainter> Reduce { get; }
+        protected Func<double, IEnumerable<TPainter>, IPainter> Reduce { get; set; }
 
         public bool IsAvailable => ContainedPainters.Any(p => p.IsAvailable);
 
         public CompositePainter(IEnumerable<TPainter> painters,
              Func<double, IEnumerable<TPainter>, IPainter> reduce)
+            : this(painters)
+        {
+            Reduce = reduce;
+        }
+
+        protected CompositePainter(IEnumerable<TPainter> painters)
         {
             ContainedPainters = painters;
-            Reduce = reduce;
         }
 
         public TimeSpan EstimateTimeToPaint(double sqMeters)

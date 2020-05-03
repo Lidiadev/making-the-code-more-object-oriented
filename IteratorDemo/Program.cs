@@ -10,7 +10,7 @@ namespace IteratorDemo
 
             IPainter fastestPainter = CompositePainterFactories.CreateFastestSelector(painters);
 
-            IPainter group = CompositePainterFactories.CreateGroup(painters);
+            IPainter group = CompositePainterFactories.CombineProportional(painters);
         }
     }
 }

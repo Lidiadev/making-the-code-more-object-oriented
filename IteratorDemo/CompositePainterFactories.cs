@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 
 namespace IteratorDemo
 {
@@ -20,23 +18,7 @@ namespace IteratorDemo
                 (sqMeters, sequence) => new Painters(sequence).GetAvailable().GetFastestOne(sqMeters)
             );
 
-        public static IPainter CreateGroup(IEnumerable<ProportionalPainter> painters)
-            => new CompositePainter<ProportionalPainter>
-            (painters, (sqMeters, sequence) =>
-            {
-                TimeSpan time = TimeSpan.FromHours(
-              sequence
-                  .Where(x => x.IsAvailable)
-                  .Select(x => 1 / x.EstimateTimeToPaint(sqMeters).TotalHours)
-                  .Sum()
-              );
-
-                double cost = sequence
-                    .Where(x => x.IsAvailable)
-                    .Select(x => x.EstimateCompensation(sqMeters) / x.EstimateTimeToPaint(sqMeters).TotalHours * time.TotalHours)
-                    .Sum();
-
-                return new ProportionalPainter(time, cost);
-            });
+        public static IPainter CombineProportional(IEnumerable<ProportionalPainter> painters)
+            => new CombiningPainter<ProportionalPainter>(painters, new ProportionalPaintingScheduler());
     }
 }
