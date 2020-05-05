@@ -6,3 +6,4 @@ Write proper object-oriented code, where objects will completely replace procedu
 - Composite Pattern
 - Strategy Pattern
 - Template Method Pattern
+- Null Object Pattern
