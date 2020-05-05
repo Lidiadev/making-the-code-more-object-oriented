@@ -13,7 +13,15 @@ namespace SpecialCaseDemo
             Duration = TimeSpan.FromDays(duration.Days);
         }
 
-        public bool IsValidOn(DateTime date)
-            => date.Date >= DateIssued && date.Date < DateIssued + Duration;
+        public void Claim(DateTime onDate, Action onValidClaim)
+        {
+            if (!IsValidOn(onDate))
+                return;
+
+            onValidClaim();
+        }
+
+        private bool IsValidOn(DateTime date)
+           => date.Date >= DateIssued && date.Date < DateIssued + Duration;
     }
 }

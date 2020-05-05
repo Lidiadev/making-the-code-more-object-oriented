@@ -22,6 +22,10 @@ namespace SpecialCaseDemo
             }
         }
 
+        public void Claim(DateTime onDate, Action onValidClaim)
+        {
+        }
+
         public bool IsValidOn(DateTime date) => false;
     }
 }

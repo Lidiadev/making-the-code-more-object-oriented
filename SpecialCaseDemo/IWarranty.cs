@@ -4,6 +4,6 @@ namespace SpecialCaseDemo
 {
     public interface IWarranty
     {
-        bool IsValidOn(DateTime date);
+        void Claim(DateTime onDate, Action onValidClaim );
     }
 }

@@ -8,15 +8,8 @@ namespace SpecialCaseDemo
         {
             DateTime now = DateTime.Now;
 
-            if (article.MoneyBackGurantee.IsValidOn(now))
-            {
-                Console.WriteLine("Offer money back.");
-            }
-
-            if (article.ExpressWarranty.IsValidOn(now))
-            {
-                Console.WriteLine("Offer repair.");
-            }
+            article.MoneyBackGurantee.Claim(now, () => Console.WriteLine("Offer money back."));
+            article.ExpressWarranty.Claim(now, () => Console.WriteLine("Offer repair."));
         }
 
         static void Main(string[] args)
@@ -26,11 +19,9 @@ namespace SpecialCaseDemo
             TimeSpan warrantySpan = TimeSpan.FromDays(365);
 
             IWarranty moneyBack = new TimeLimitedWarranty(sellingDate, moneyBackSpan);
-            IWarranty warranty = new TimeLimitedWarranty(sellingDate, warrantySpan);
+            IWarranty warranty = new LifetimeWarranty(sellingDate);
 
-            IWarranty noMoneyBack = VoidWarranty.Instance;
-
-            SoldArticle goods = new SoldArticle(noMoneyBack, warranty);
+            SoldArticle goods = new SoldArticle(moneyBack, warranty);
             ClaimWarranty(goods);
 
             Console.ReadLine();
