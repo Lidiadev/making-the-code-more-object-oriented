@@ -8,3 +8,4 @@ Write proper object-oriented code, where objects will completely replace procedu
 - Template Method Pattern
 - Null Object Pattern
 - Special Case Pattern
+- Option Pattern
