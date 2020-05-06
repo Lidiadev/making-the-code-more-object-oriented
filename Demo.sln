@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ValueObjectEqualityOperator
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpecialCaseDemo", "SpecialCaseDemo\SpecialCaseDemo.csproj", "{21EE705F-A2E1-4319-BBD0-5286098CA8AA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwitchDemo", "SwitchDemo\SwitchDemo.csproj", "{D9C0EF8B-175C-4DB4-9E95-5780CC8B81BF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{21EE705F-A2E1-4319-BBD0-5286098CA8AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{21EE705F-A2E1-4319-BBD0-5286098CA8AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{21EE705F-A2E1-4319-BBD0-5286098CA8AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9C0EF8B-175C-4DB4-9E95-5780CC8B81BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9C0EF8B-175C-4DB4-9E95-5780CC8B81BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9C0EF8B-175C-4DB4-9E95-5780CC8B81BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9C0EF8B-175C-4DB4-9E95-5780CC8B81BF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
