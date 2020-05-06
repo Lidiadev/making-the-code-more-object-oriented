@@ -12,3 +12,4 @@ Write proper object-oriented code, where objects will completely replace procedu
 - Special Case Pattern
 - Option Pattern
 - Pattern Matching
+- Double dispatch Pattern
