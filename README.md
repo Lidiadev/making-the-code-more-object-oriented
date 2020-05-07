@@ -15,6 +15,7 @@ Write proper object-oriented code, where objects will completely replace procedu
 - Double Dispatch Pattern
 - Factory Pattern
 - Rules Pattern
+- State Machine pattern
 
 ### Use cases:
 
@@ -46,4 +47,6 @@ Write proper object-oriented code, where objects will completely replace procedu
 
 - Replace chained branches into the Chain of Rule Object 
 	- use the rules pattern
-	- substitute the chained branches branching at runtime by using a factory to create the rules.
+	- substitute the chained branches branching at runtime by using a factory to create the rules
+	- the rule implementation is deciding which strategy to choose based on the state
+	- the rule is the if-then-else instruction, but turned into an object.
