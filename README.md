@@ -47,6 +47,7 @@ Write proper object-oriented code, where objects will completely replace procedu
 
 - Replace chained branches into the Chain of Rule Object 
 	- use the rules pattern
-	- substitute the chained branches branching at runtime by using a factory to create the rules
-	- the rule implementation is deciding which strategy to choose based on the state
-	- the rule is the if-then-else instruction, but turned into an object.
+	- convert rules to objects and organize them into a chain
+	- the rule is the if-then-else instruction, but turned into an object
+	- chaining decides rules order, highest priority rule comes first
+	- substitute the chained branches branching at runtime by using a factory to create the rules.
