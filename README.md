@@ -33,7 +33,7 @@ Write proper object-oriented code, where objects will completely replace procedu
 - Remove null checks:
 	- use the null object pattern.
 	
-- Remove optional calls
+- Remove optional calls:
 	- turn optional call into calls on optional object-oriented
 	- represent optional object as a collection
 	- wrapt a collection into an option type
@@ -45,7 +45,7 @@ Write proper object-oriented code, where objects will completely replace procedu
 	- turn multiway branching into a dictionary object-oriented
 	- substitute the multiway branching at runtime by using a factory to create the dictionary.
 
-- Replace chained branches into the Chain of Rule Object 
+- Replace chained branches into the Chain of Rule Object: 
 	- use the rules pattern
 	- convert rules to objects and organize them into a chain
 	- the rule is the if-then-else instruction, but turned into an object
