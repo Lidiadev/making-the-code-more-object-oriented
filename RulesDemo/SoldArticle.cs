@@ -1,9 +1,8 @@
-﻿using SwitchDemo.Common;
-using SwitchDemo.Common.Interfaces;
+﻿using RulesDemo.Common;
+using RulesDemo.Common.Interfaces;
 using System;
-using System.Collections.Generic;
 
-namespace SwitchDemo
+namespace RulesDemo
 {
     public class SoldArticle
     {
@@ -12,59 +11,50 @@ namespace SwitchDemo
         private IWarranty CircuitryWarranty { get; set; }
 
         private IOption<Part> Circuitry { get; set; } = Option<Part>.None();
-
-        private DeviceStatus OperationalStatus { get; set; }
-        private IReadOnlyDictionary<DeviceStatus, Action<Action>> WarrantyMap { get; }
+        private IWarrantyRules WarrantyRules { get; }
 
         public SoldArticle(IWarranty moneyBackGuarantee, 
-            IWarranty expressWarranty, 
-            IWarrantyMapFactory rulesFactory)
+            IWarranty expressWarranty,
+            IWarrantyRulesFactory rulesFactory)
         {
             MoneyBackGuarantee = moneyBackGuarantee ?? throw new ArgumentNullException(nameof(moneyBackGuarantee));
             NotOperationalWarranty = expressWarranty ?? throw new ArgumentNullException(nameof(expressWarranty));
             CircuitryWarranty = VoidWarranty.Instance;
 
-            OperationalStatus = DeviceStatus.AllFine();
-            WarrantyMap = rulesFactory.Create(ClaimMoneyBack, ClaimNotOperationalWarranty, ClaimCircuitryWarranty);
+            WarrantyRules = rulesFactory
+                .Create(ClaimMoneyBack, ClaimNotOperationalWarranty, ClaimCircuitryWarranty);
         }
 
         public void InstallCircuitry(Part circuitry, IWarranty extendedWarranty)
         {
             Circuitry = Option<Part>.Some(circuitry);
             CircuitryWarranty = extendedWarranty;
-            OperationalStatus = OperationalStatus.CircuitryReplaced();
+            WarrantyRules.CircuitryOperational();
         }
 
         public void CircuitryNotOperational(DateTime detectedOn)
         {
-            Circuitry
-                .WhenSome()
-                .Do(c =>
-                {
-                    c.MarkDefective(detectedOn);
-                    OperationalStatus = OperationalStatus.CircuitryFailed();
-                })
-                .Execute();
+            WarrantyRules.CircuitryFailed();
         }
 
         public void VisibleDamage()
         {
-            OperationalStatus = OperationalStatus.WithVisibleDamage();
+            WarrantyRules.VisibleDamage();
         }
 
         public void NotOperational()
         {
-            OperationalStatus = OperationalStatus.NotOperational();
+            WarrantyRules.NotOperational();
         }
 
         public void Repaired()
         {
-            OperationalStatus = OperationalStatus.Repaired();
+            WarrantyRules.Operational();
         }
 
         public void ClaimWarranty(Action onValidClaim)
         {
-            WarrantyMap[OperationalStatus].Invoke(onValidClaim);
+            WarrantyRules.Claim(onValidClaim);
         }
 
         private void ClaimMoneyBack(Action action)
