@@ -20,7 +20,7 @@ Write proper object-oriented code, where objects will completely replace procedu
 ### Use cases for this demo:
 
 - Replace branching over booleans:
-	- use state pattern
+	- use the state pattern.
 	
 - Turning algorithms into strategy objects:
 	- identify the moving parts of an algorithm
