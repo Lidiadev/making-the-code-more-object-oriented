@@ -17,7 +17,7 @@ Write proper object-oriented code, where objects will completely replace procedu
 - Rules Pattern
 - State Machine pattern
 
-### Use cases:
+### Use cases for this demo:
 
 - Replace branching over booleans:
 	- use state pattern
