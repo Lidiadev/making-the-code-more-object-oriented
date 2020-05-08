@@ -22,6 +22,13 @@ Write proper object-oriented code, where objects will completely replace procedu
 - Replace branching over booleans:
 	- use the state pattern.
 	
+- Removing loops:
+	- use LINQ to Objects to replace loops
+	- use the composite pattern:
+		- wrap the sequence into a specialized object 
+		- expose the operations used to perform manually as atomic operations on that collection class
+		- refactor the client to use the collection class instead of consuming explicit collections or sequences of objects.
+
 - Turning algorithms into strategy objects:
 	- identify the moving parts of an algorithm
 	- use template method and the strategy pattern.
